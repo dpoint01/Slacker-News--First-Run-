@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> Slacker News</title>
+
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+     <div class ="container" >
+        <h1> <img class="icon" src = "https://news.ycombinator.com/y18.gif" height="25" width="25"/> Slacker News <span class ="header">new | comments | ask | jobs |
+         <a href= "http://localhost:4567/submit">submit </a></span></h1>
+
+      <% @result["items"].each_with_index do |article, index| %>
+        <ul class="article">
+          <li><%= index + 1 %>. </li>
+          <li><%= article["title"] %></li>
+          <li><%= strip_url(article["url"]) %></li>
+        </ul>
+        <ul class="article-subtitle">
+          <li><%= article["points"] %> points</li>
+          <li>by <%= article["postedBy"] %></li>
+          <li><%= article["postedAgo"] %></li>
+          <li>| <%= article["commentCount"] %> comments</li>
+        </ul>
+      <% end %>
+      </div>
+  </body>
+</html>
